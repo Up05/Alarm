@@ -1,0 +1,94 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@Deprecated
+    public static void _parse(String[] args) throws IOException {
+
+        StringBuilder time = new StringBuilder(18);
+        String name = null;
+
+
+
+        for (int i = 0; i < args.length; i++) {
+
+            if(is(args[i], "a", "-add")){
+                for (int j = i + 1; j < Math.min(i + 9, args.length); j++) {
+                    // If name flag has been reached.
+                    if(is(args[j], "n", "-name")){
+                        if(args[j + 1] != null)
+                            name = args[j + 1];
+                        else { j --; System.err.println("Name missing for --add flag! -n <name>"); }
+                        i =    j + 1;
+                        break;
+                    // If current argument has normal date format e.g. 31d, 9999h...
+                    } else if (args[j].matches("\\d+[ydhms]")){
+                        time.append(args[j]).append(' ');
+                    // If it's neither a flag nor a date format, it's name
+                    } else if(args[j].charAt(0) != '-' || args[j].charAt(1) != '-') {
+                        name = args[j];
+                        i = j;
+                        break;
+                    // Else if it is an unrelated flag (e.g.) --list
+                    } else {
+                        i = j;
+                        break;
+                    }
+                }
+                if(time.length() > 2)
+                    time.deleteCharAt(time.length() - 1);
+                else
+                    System.err.println("Alarm -a requires time parameters");
+                USocket.send("a " + time + " " + name);
+
+            } else if (is(args[i], "d", "-delete")){ // Alright, I can see why Java maybe isn't the #1 language
+                if(args.length < i + 2)
+                    System.err.println("Alarm -d requires a name!");
+                else if(is(args[i + 1], "n", "-name"))
+                    if(args[i + 2] == null) System.err.println("Name missing for --delete flag!");
+                    else { name = args[i + 2]; i += 2; }
+                else { name = args[i + 1]; i ++; } // this should really be function calls
+                USocket.send("r " + name);
+
+            } else if(is(args[i], "l", "-list")){
+                if(args[i + 1] != null) {
+                    if (is(args[i + 1], "r", "-relative"))
+                        USocket.send("l r");
+                        continue;
+                    }
+                USocket.send("l");
+
+            } else if(is(args[i], "h", "-help")){
+                File file = new File(Main.DATA_PATH + '/' + Config.get("help_file", "lang/help/EN.man"));
+                if(file.exists()) {
+                    BufferedReader reader = new BufferedReader( new FileReader(file) );
+                    String line;
+                    while ((line = reader.readLine()) != null)
+                        System.out.println(line);
+                } else {
+                    System.err.println("Help file not found at: \"" + file.getAbsolutePath() + "\"! Falling back to default text.");
+                    // TODO:
+                    System.out.println("some default help text...");
+                }
+
+            } else {
+                if(args[i].contains("-"))
+                    System.err.println("The flag: '" + args[i] + "' is not supported!");
+                else
+                    System.err.println("The argument: '" + args[i] + "' isn't wanted (and loved)!");
+            }
+
+            time = null; name = null;
+        }
+
+    }
