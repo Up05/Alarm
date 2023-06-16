@@ -6,7 +6,7 @@ This is an alarm cli made for convenience and interoperability.
 # Getting started
 
 0. Install Windows
-1. Install it. 
+1. Install [Alarm](https://github.com/Up05/Alarm/edit/main). 
 2. Restart your computer or run the server/backend.
 3. Open your console of choice
 4. type: `alarm -a <time> <name>` to add a new alarm, or `alarm` for more information.
