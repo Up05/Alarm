@@ -1,0 +1,8 @@
+alarm -l, --list [-r, --relative]
+
+Lists currently active/stored alarms in both the client and backend terminals.
+
+--list has 2 modes: absolute & relative.
+  Absolute: dates are formatted as DD:MM:YYYY HH:MM:SS, start from 0 year AD. (default)
+  Relative: dates are formatted as (1-inf)y (1-365)d (1-24)h (1-60)m (1-60)s. 
+    (Months are trash, so I don't use them)

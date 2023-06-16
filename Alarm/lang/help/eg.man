@@ -1,0 +1,17 @@
+alarm -a 1y 1d 1h 1m 1s -n example1
+alarm --add 2y example2
+alarm -a 1h
+alarm -a 1h example3 -d -n example3
+
+alarm -d example4
+alarm --delete example5
+alarm -d "example6 example6.5"
+alarm -d example7 -d example8 -d example9
+
+alarm -l -list -relative
+alarm -s
+
+alarm -h
+alarm --help
+alarm
+alarm -h help -h eg -h list -h show -h add -h delete -h

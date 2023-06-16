@@ -1,0 +1,5 @@
+alarm -s, --show
+
+Toggles the server window's visibility when called.
+The config("show_console") can also be used to set 
+  whether the window will be hidden, but only on start-up.

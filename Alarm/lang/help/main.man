@@ -1,0 +1,9 @@
+Use "alarm -h help" for more information.
+
+alarm -a, --add <time> [-n, --name] <name>
+alarm -d, --delete [-n, --name] <name>
+alarm -l, --list [-r, --relative]
+alarm -s, --show 
+alarm [-h, --help] [<manual name>] 
+
+Time units: s(second), m(minute), h(hour), w(day), y(365 * day)

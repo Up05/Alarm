@@ -1,0 +1,4 @@
+client_port: 347
+server_port: 348
+help_file: lang/help/main.man
+show_console: true

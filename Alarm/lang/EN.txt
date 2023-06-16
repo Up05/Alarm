@@ -1,0 +1,11 @@
+HELP=
+Basic, fast, easy-to-use cli for alarms.
+
+Time units: y - years, d - days, h - hours, m - minutes, s - seconds.
+
+alarm -a or --add       [-t] 7y 7d 7s [-n] name2
+alarm -r or --remove    [-n] name2
+alarm -l or --list      [-r]
+alarm -h or --help
+alarm -c or --configure [-h] [--port] [--lang] EN/LT [--open]
+alarm -u or --update    # only checks for updates.

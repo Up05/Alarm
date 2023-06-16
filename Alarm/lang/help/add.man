@@ -1,0 +1,8 @@
+alarm -a, --add <time> [-n, --name] [<name>]
+
+The add command adds a new alarm. 
+If not given a name, it will use: ("Alarm-" + alarms.length) formula for the new name.
+  Name collisions are okay.
+<time> is a relative time given by using numbers, units & spaces. E.g.: "alarm -a 7d 6h 4s".
+
+Negative numbers are, likely, not supported and, certainly, not tested!

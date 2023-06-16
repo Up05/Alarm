@@ -1,0 +1,7 @@
+alarm [-h, --help] [<manual name>]
+
+Reads a text/manual file and displays it's contents.
+Current possible manual names: {"main", "eg", "add", "delete", "help", "list", "show"}
+The way it finds a file (Windows 10): 
+  filePath = "%AppDataLocal%/Ult1/Alarm/lang/help/" + argument + ".man"
+  (The path to the main help file is calculated differently and can be edited in the config)

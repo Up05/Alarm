@@ -1,0 +1,5 @@
+alarm -d, --delete [-n, --name] <name>
+
+Deletes an alarm by name.
+If two alarms have matching names, this, likely, deletes the latest one. 
+  Although, it is not guaranteed!
